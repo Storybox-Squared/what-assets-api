@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var assets = require('./routes/assets');
 
 var app = express();
 
@@ -25,10 +25,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
     // authenticate
+    next();
 });
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/assets', assets);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
